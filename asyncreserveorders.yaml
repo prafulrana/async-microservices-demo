@@ -1,0 +1,28 @@
+asyncapi: 2.0.0
+info:
+  title: Async Request/Reply Billing API
+  version: 0.1.0
+
+channels:
+  create_order:
+    publish:
+        message:
+          $ref: "#/components/messages/orderReservationRequest"
+  
+  response:
+    subscribe:
+        message:
+          $ref: "#/components/messages/orderReservationRequest"
+
+
+components:
+  messages:
+    orderReservationRequest:
+      schemaFormat: application/raml+yaml;version=1.0
+      payload:
+        $ref: /exchange_modules/7dcb6e69-45a1-4ec2-8dad-32a832520294/orderrequest/1.0.0/orderrequest.raml
+        
+    orderReservationResponse:
+      schemaFormat: application/raml+yaml;version=1.0
+      payload:
+        $ref: /exchange_modules/7dcb6e69-45a1-4ec2-8dad-32a832520294/orderresponse/1.0.0/orderresponse.raml
